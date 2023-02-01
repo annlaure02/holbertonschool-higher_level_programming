@@ -24,6 +24,6 @@ def matrix_divided(matrix, div):
                     integers/floats")
         for i in row:
             if type(i) is not int and type(i) is not float:
-                raise TypeError("matrix must be a matrix (list of lists) of \
-                        integers/floats")
+               raise TypeError("matrix must be a matrix (list of lists) of \
+integers/floats") 
     return [[round(i/div, 2) for i in row] for row in matrix]
