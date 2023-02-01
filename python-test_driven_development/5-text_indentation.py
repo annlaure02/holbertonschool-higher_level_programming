@@ -9,12 +9,16 @@ def text_indentation(text):
        raise TypeError("text must be a string")
 
     delim = [".", "?", ":"]
-    a = 0
-    while a < len(text):
-        if text[a] in delim:
-            print(text[a])
-            print()
-            a += 1
-        else:
-            print(text[a], end='')
-        a += 1
+    i = 0
+    for line in text:
+        if i == 0:
+            if line == " ":
+                continue
+            else:
+                i = 1
+        if i == 1:
+            if line in delim:
+                print(line + "\n")
+                i = 0
+            else:
+                print(line, end="")
