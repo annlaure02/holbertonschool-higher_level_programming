@@ -1,12 +1,12 @@
 #!/usr/bin/python3
-""" function that prints a text with 2 new lines after each 
+""" function that prints a text with 2 new lines after each
     of these characters: ., ? and : """
 
 
 def text_indentation(text):
     """ seperate a string from delimiter """
     if not isinstance(text, str):
-       raise TypeError("text must be a string")
+        raise TypeError("text must be a string")
 
     delim = [".", "?", ":"]
     i = 0
