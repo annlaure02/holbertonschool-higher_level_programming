@@ -1,0 +1,16 @@
+>>> say_my_name = __import__('3-say_my_name').say_my_name
+
+Test with first name and/or last name
+
+>>> say_my_name("John", "Snow")
+My name is John Snow
+
+Test with different type
+
+>>> say_my_name(2, "Snow")
+Traceback (most recent call last):
+TypeError: first_name must be a string
+
+>>> say_my_name("John", 2)
+Traceback (most recent call last):
+TypeError: last_name must be a string
