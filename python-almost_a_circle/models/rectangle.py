@@ -86,9 +86,9 @@ class Rectangle(Base):
                                                        self.height)
 
     def update(self, *args, **kwargs):
-        """ assign argument to each attribute 
-            and assigns a key/value argument to attributes """
-        if len(args) != 0:
+        """ assign argument to each attribute
+        and assigns a key/value argument to attributes """
+        if len(args) != 0 and args is not "":
             if len(args) >= 1:
                 self.id = args[0]
             if len(args) > 1:
