@@ -23,7 +23,7 @@ class Square(Rectangle):
 
     def update(self, *args, **kwargs):
         """ assigns attributes """
-        if len(args) != 0 and args is not "":
+        if len(args) != 0 and args != "":
             for i in range(len(args)):
                 if i == 0:
                     self.id = args[i]
@@ -43,3 +43,10 @@ class Square(Rectangle):
                     self.x = value
                 if key == "y":
                     self.y = value
+
+    def to_dictionary(self):
+        """ returns the dictionary representation of a Square """
+        return {"id": self.id,
+                "size": self.size,
+                "x": self.x,
+                "y": self.y}
