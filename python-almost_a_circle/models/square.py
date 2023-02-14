@@ -26,7 +26,7 @@ class Square(Rectangle):
         if len(args) != 0 and args is not "":
             for i in range(len(args)):
                 if i == 0:
-                	self.id = args[i]
+                    self.id = args[i]
                 if i == 1:
                     self.size = args[i]
                 if i == 2:
