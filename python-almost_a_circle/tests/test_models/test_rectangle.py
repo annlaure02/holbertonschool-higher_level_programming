@@ -21,14 +21,14 @@ class Test_Rectangle(unittest.TestCase):
 
     def test_type_error_init(self):
         """ tests error messages value is not int """
-        self.assertRaises(TypeError, "width must be an integer",
-                          Rectangle, ("8", 6, 4, 2, 10))
-        self.assertRaises(TypeError, "height must be an integer",
-                          Rectangle, (8, "6", 4, 2, 10))
-        self.assertRaises(TypeError, "x must be an integer",
-                          Rectangle, (8, 6, "4", 2, 10))
-        self.assertRaises(TypeError, "y must be an integer",
-                          Rectangle, (8, 6, 4, "2", 10))
+        self.assertRaisesRegex(TypeError, "width must be an integer",
+                               Rectangle, "8", 6, 4, 2, 10)
+        self.assertRaisesRegex(TypeError, "height must be an integer",
+                               Rectangle, 8, "6", 4, 2, 10)
+        self.assertRaisesRegex(TypeError, "x must be an integer",
+                               Rectangle, 8, 6, "4", 2, 10)
+        self.assertRaisesRegex(TypeError, "y must be an integer",
+                               Rectangle, 8, 6, 4, "2", 10)
 
     def test_value_error_init(self):
         """ tests error messages value is not les than 0 """
@@ -76,7 +76,12 @@ class Test_Rectangle(unittest.TestCase):
         r = Rectangle(10, 10, 10, 10)
         r.update(height=1)
         self.assertEqual(r.height, 1)
-        
 
-if __name__ == "__main__":
+    def test_to_dictionary(self):
+        """ tests methode dictionary """
+        r = Rectangle(2, 4, 6, 8, 22)
+        self.assertEqual(r.to_dictionary(), {'id': 22, 'width': 2, 'height': 4,
+                                             'x': 6, 'y': 8})
+
+if __name__ == '__main__':
     unittest.main()
