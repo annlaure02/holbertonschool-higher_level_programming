@@ -34,6 +34,10 @@ class Test_Rectangle(unittest.TestCase):
         """ tests error messages value is not les than 0 """
         self.assertRaisesRegex(ValueError, "width must be > 0",
                                Rectangle, -8, 6, 4, 2, 10)
+        self.assertRaisesRegex(ValueError, "width must be > 0",
+                               Rectangle, 0, 6, 4, 2, 10)
+        self.assertRaisesRegex(ValueError, "height must be > 0",
+                               Rectangle, 2, 0, 4, 2, 10)
         self.assertRaisesRegex(ValueError, "height must be > 0",
                                Rectangle, 8, -6, 4, 2, 10)
         self.assertRaisesRegex(ValueError, "x must be >= 0",
