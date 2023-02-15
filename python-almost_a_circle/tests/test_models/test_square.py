@@ -90,9 +90,9 @@ class Test_Rectangle(unittest.TestCase):
 
     def test_create(self):
         """ test method create """
-        r = Rectangle.create(**{'id': 5, 'size': 6,'x': 2, 'y': 1})
-        r1 = Rectangle(5, 6, 2, 1)
-        self.assertIsNot(r, r1)
+        s = Square.create(**{'id': 5, 'size': 6,'x': 2, 'y': 1})
+        s1 = Square(6, 2, 1, 5)
+        self.assertIsNot(s, s1)
 
 if __name__ == '__main__':
     unittest.main()
