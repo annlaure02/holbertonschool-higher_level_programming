@@ -94,5 +94,11 @@ class Test_Rectangle(unittest.TestCase):
         self.assertEqual(r.to_dictionary(), {'id': 22, 'width': 2, 'height': 4,
                                              'x': 6, 'y': 8})
 
+    def test_create(self):
+        """ test methode create """
+        r = Rectangle.create(**{'id': 1, 'width': 3,'height': 5,'x': 0, 'y': 0})
+        r1 = Rectangle(1, 3, 5)
+        self.assertIsNot(r, r1)
+
 if __name__ == '__main__':
     unittest.main()
