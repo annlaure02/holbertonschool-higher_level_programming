@@ -67,6 +67,13 @@ class Test_Rectangle(unittest.TestCase):
             res = buffer.getvalue()
         self.assertEqual(res, output)
 
+        r1 = Rectangle(5, 3, 1, 1)
+        output = '\n #####\n #####\n #####\n'
+        with StringIO() as buffer, redirect_stdout(buffer):
+            r1.display()
+            res = buffer.getvalue()
+        self.assertEqual(res, output)
+
     def test_update_args(self):
         """ tests update method to assigns argument to attribute """
         r = Rectangle(10, 10, 10, 10)
