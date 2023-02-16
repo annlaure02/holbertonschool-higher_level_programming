@@ -96,7 +96,7 @@ class Rectangle(Base):
                 if i == 1:
                     self.width = args[i]
                 if i == 2:
-                    self.width = args[i]
+                    self.height = args[i]
                 if i == 3:
                     self.x = args[i]
                 if i == 4:
