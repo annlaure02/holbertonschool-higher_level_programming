@@ -3,7 +3,6 @@
 """
 import unittest
 from io import StringIO
-import os
 from contextlib import redirect_stdout
 from models.rectangle import Rectangle
 from models.square import Square

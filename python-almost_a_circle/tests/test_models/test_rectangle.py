@@ -4,7 +4,6 @@
 import unittest
 from io import StringIO
 from contextlib import redirect_stdout
-import os
 from models.rectangle import Rectangle
 from models.base import Base
 
@@ -106,24 +105,21 @@ class Test_Rectangle(unittest.TestCase):
         """ test that writes the JSON string representation
             of list_objs to a file """
         r = Rectangle(10, 7, 2, 8, 1)
+        Rectangle.save_to_file(None)
+        with open("Rectangle.json", "r") as f:
+            read = f.read()
+        self.assertEqual(read, '[]')
+
         Rectangle.save_to_file([r])
         with open("Rectangle.json", "r") as f:
             read = f.read()
         result = '[{"id": 1, "width": 10, "height": 7, "x": 2, "y": 8}]'
         self.assertEqual(read, result)
-        os.remove("Rectangle.json")
 
         Rectangle.save_to_file([])
         with open("Rectangle.json", "r") as f:
             read = f.read()
         self.assertEqual(read, '[]')
-        os.remove("Rectangle.json")
-
-        Rectangle.save_to_file(None)
-        with open("Rectangle.json", "r") as f:
-            read = f.read()
-        self.assertEqual(read, '[]')
-        os.remove("Rectangle.json")
 
     def test_load_from_file(self):
         """ test that returns a list of instances """
