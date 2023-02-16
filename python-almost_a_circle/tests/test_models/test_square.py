@@ -104,19 +104,24 @@ class Test_Rectangle(unittest.TestCase):
             read = f.read()
         result = '[{"id": 1, "size": 10, "x": 2, "y": 8}]'
         self.assertEqual(read, result)
-        os.remove("Square.json")
 
         Square.save_to_file([])
         with open("Square.json", "r") as f:
             read = f.read()
         self.assertEqual(read, '[]')
-        os.remove("Square.json")
 
         Square.save_to_file(None)
         with open("Square.json", "r") as f:
             read = f.read()
         self.assertEqual(read, '[]')
-        os.remove("Square.json")
+
+    def test_load_from_file(self):
+        """ test that returns a list of instances """
+        s = Square(5)
+        Square.save_to_file([s])
+        Squares = Square.load_from_file()
+        self.assertIsInstance(Squares[0], Square)
+        self.assertEqual(Squares[0].size, 5)
 
 if __name__ == '__main__':
     unittest.main()
