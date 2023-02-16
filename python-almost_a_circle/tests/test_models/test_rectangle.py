@@ -4,6 +4,7 @@
 import unittest
 from io import StringIO
 from contextlib import redirect_stdout
+import os
 from models.rectangle import Rectangle
 from models.base import Base
 
@@ -91,14 +92,26 @@ class Test_Rectangle(unittest.TestCase):
     def test_to_dictionary(self):
         """ tests methode dictionary """
         r = Rectangle(2, 4, 6, 8, 22)
-        self.assertEqual(r.to_dictionary(), {'id': 22, 'width': 2, 'height': 4,
-                                             'x': 6, 'y': 8})
+        self.assertEqual(r.to_dictionary(), {'id': 22, 'width': 2, 
+                                             'height': 4, 'x': 6, 'y': 8})
 
     def test_create(self):
         """ test methode create """
-        r = Rectangle.create(**{'id': 1, 'width': 3,'height': 5,'x': 0, 'y': 0})
+        r = Rectangle.create(**{'id': 1, 'width': 3,'height': 5,
+                                'x': 0, 'y': 0})
         r1 = Rectangle(1, 3, 5)
         self.assertIsNot(r, r1)
+
+    def test_save_to_file(self):
+        """ test that writes the JSON string representation
+            of list_objs to a file """
+        r = Rectangle(10, 7, 2, 8, 1)
+        Rectangle.save_to_file([r])
+        with open("Rectangle.json", "r") as f:
+            read = f.read()
+        result = '[{"id": 1, "width": 10, "height": 7, "x": 2, "y": 8}]'
+        self.assertEqual(read, result)
+        os.remove("Rectangle.json")
 
 if __name__ == '__main__':
     unittest.main()
