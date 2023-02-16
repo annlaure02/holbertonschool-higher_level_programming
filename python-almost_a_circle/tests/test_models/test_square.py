@@ -3,6 +3,7 @@
 """
 import unittest
 from io import StringIO
+import os
 from contextlib import redirect_stdout
 from models.rectangle import Rectangle
 from models.square import Square
@@ -93,6 +94,29 @@ class Test_Rectangle(unittest.TestCase):
         s = Square.create(**{'id': 5, 'size': 6,'x': 2, 'y': 1})
         s1 = Square(6, 2, 1, 5)
         self.assertIsNot(s, s1)
+
+    def test_save_to_file(self):
+        """ test that writes the JSON string representation
+            of list_objs to a file """
+        s = Square(10, 2, 8, 1)
+        Square.save_to_file([s])
+        with open("Square.json", "r") as f:
+            read = f.read()
+        result = '[{"id": 1, "size": 10, "x": 2, "y": 8}]'
+        self.assertEqual(read, result)
+        os.remove("Square.json")
+
+        Square.save_to_file([])
+        with open("Square.json", "r") as f:
+            read = f.read()
+        self.assertEqual(read, '[]')
+        os.remove("Square.json")
+
+        Square.save_to_file(None)
+        with open("Square.json", "r") as f:
+            read = f.read()
+        self.assertEqual(read, '[]')
+        os.remove("Square.json")
 
 if __name__ == '__main__':
     unittest.main()
