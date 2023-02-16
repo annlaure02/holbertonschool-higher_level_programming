@@ -99,6 +99,11 @@ class Test_Rectangle(unittest.TestCase):
         """ test that writes the JSON string representation
             of list_objs to a file """
         s = Square(10, 2, 8, 1)
+        Square.save_to_file(None)
+        with open("Square.json", "r") as f:
+            read = f.read()
+        self.assertEqual(read, '[]')
+
         Square.save_to_file([s])
         with open("Square.json", "r") as f:
             read = f.read()
@@ -106,11 +111,6 @@ class Test_Rectangle(unittest.TestCase):
         self.assertEqual(read, result)
 
         Square.save_to_file([])
-        with open("Square.json", "r") as f:
-            read = f.read()
-        self.assertEqual(read, '[]')
-
-        Square.save_to_file(None)
         with open("Square.json", "r") as f:
             read = f.read()
         self.assertEqual(read, '[]')
