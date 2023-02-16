@@ -125,5 +125,14 @@ class Test_Rectangle(unittest.TestCase):
         self.assertEqual(read, '[]')
         os.remove("Rectangle.json")
 
+    def test_load_from_file(self):
+        """ test that returns a list of instances """
+        r = Rectangle(5, 8)
+        Rectangle.save_to_file([r])
+        rectangles = Rectangle.load_from_file()
+        self.assertIsInstance(rectangles[0], Rectangle)
+        self.assertEqual(rectangles[0].width, 5)
+        self.assertEqual(rectangles[0].height, 8)
+
 if __name__ == '__main__':
     unittest.main()
