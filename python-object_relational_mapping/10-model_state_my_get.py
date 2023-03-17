@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-    prints the State object with the name passed as argument 
+    prints the State object with the name passed as argument
     from the database hbtn_0e_6_usa
 """
 import sys
@@ -16,8 +16,8 @@ if __name__ == '__main__':
     Base.metadata.create_all(engine)
     Session = sessionmaker(bind=engine)
     session = Session()
-    state = session.query(State).order_by(State.id) \
-            .filter(State.name == sys.argv[4]).first()
+    state = session.query(State).order_by(State.id)\
+        .filter(State.name == sys.argv[4]).first()
     if not state:
         print("Not found")
     else:
