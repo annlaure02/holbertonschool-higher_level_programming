@@ -11,7 +11,7 @@ request.get(url, function (error, response, body) {
     const characters = films.results[i].characters;
     for (let j = 0; j < characters.length; j++) {
       const charID = characters[j].match('18');
-      if (charID > 0) {
+      if (charID) {
         count++;
       }
     }
