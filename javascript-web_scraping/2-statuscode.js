@@ -2,7 +2,7 @@
 
 const request = require('request');
 
-request.get(process.argv[2], function (error, response) {
-  console.error(error);
+request.get(process.argv[2], function (err, response) {
+  console.error(err);
   console.log('code:', response.statusCode);
 });
